@@ -46,7 +46,7 @@ namespace HttpConnect
 	    Console.WriteLine("Relay Task START");
 	    // first, try to connect through proxy
 	    try {
-		var proxy_a = proxy.Split(":");
+		var proxy_a = proxy.Split(':');
 		var addrs = Dns.GetHostAddresses(proxy_a[0]);
 		if (addrs.Length == 0) {
 		    Console.WriteLine($"Bad proxy: {proxy}");
@@ -76,7 +76,7 @@ namespace HttpConnect
 		    }
 		    // wait HTTP/1.1 200 OK
 		    string resp = Encoding.ASCII.GetString(buf);
-		    var resp_a = resp.Split(" ");
+		    var resp_a = resp.Split(' ');
 		    if (resp_a.Length < 3) {
 			// bad resp
 			return 0;
